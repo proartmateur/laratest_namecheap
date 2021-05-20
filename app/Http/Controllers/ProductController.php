@@ -35,9 +35,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product;
-        $product->name = $request->name;
-        $product->save();
+        try{
+            $pname = $request->name;
+            $product = new Product;
+            $product->name = $pname;
+            $product->save();
+        } catch(\Exception $e){
+            return response()->json(array(
+                "error"=>"No se pudo agregar el producto $pname"
+            ));
+        }
     }
 
     /**
