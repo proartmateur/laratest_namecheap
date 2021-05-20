@@ -23,3 +23,11 @@ Route::get('/hi',function (Request  $request){
         "Hi"=>"Hola"
     ));
 } );
+
+Route::post('/hi', function (Request $request){
+    return response()->json(
+        array(
+            "HII"=>"HOOO"
+        )
+    );
+});
