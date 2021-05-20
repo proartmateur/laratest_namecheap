@@ -31,7 +31,7 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -40,6 +40,9 @@ class ProductController extends Controller
             $product = new Product;
             $product->name = $pname;
             $product->save();
+            return response()->json(
+                array("ip"=>$request->ip())
+            );
         } catch(\Exception $e){
             return response()->json(array(
                 "error"=>"No se pudo agregar el producto $pname"
