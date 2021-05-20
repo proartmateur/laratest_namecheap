@@ -31,3 +31,5 @@ Route::post('/hi', function (Request $request){
         )
     );
 });
+
+Route::resource('/product', \App\Http\Controllers\ProductController::class);
